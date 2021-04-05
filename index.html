@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Super Trunfo </title>
+
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-super-trunfo.png" alt="">
+        <h1 class="page-title typing-animation"> Trunfo nas Estrelas</h1>
+        <button class="btnDraw" onclick="sortearCarta()" id="btnSortear">Sortear carta</button>
+        <form id="form">
+            <div class="wrapper">
+                <div id="placar"></div>
+                <div id="quantidade-cartas"></div>
+                <h2 id="title-atribute"></h2>
+                <div id="cartas">
+                    <div id="carta-jogador" class="carta"></div>
+                    <div id="carta-maquina" class="carta"></div>
+                </div>
+            </div>
+            <button type="button" id="btnJogar" onclick="jogar()">Jogar</button>
+            <button type="button" id="btnProximaRodada" onclick="proximaRodada()">Proxima
+                rodada</button>
+            <div id="resultado"></div>
+        </form>
+    </div>
+
+</body>
+
+<script src="script.js"></script>
+
+</html>

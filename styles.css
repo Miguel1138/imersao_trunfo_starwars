@@ -1,0 +1,179 @@
+body {
+    font-family: 'Pathway Gothic One', monospace;
+    background-image: url('https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-07-super-trunfo-bg.png');
+    background-color: #000000;
+    background-size: cover;
+    color: rgba(255, 255, 0, 0.87);
+    background-position: center top;
+    background-repeat: no-repeat;
+    padding-bottom: 20vh;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.page-title {
+    border-right: 2px solid rgba(255, 255, 0, 0.75);
+    color: rgba(255, 255, 0, 0.87);
+    font-size: 5em;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.typing-animation {
+    animation: blinkCursor 500ms steps(40) infinite normal, typing 4s steps(40) 1s normal both;
+}
+
+@keyframes blinkCursor {
+    from {
+        border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 7em;
+    }
+}
+
+button {
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: .8rem 1.5rem;
+    margin: 1rem 0;
+    color: rgba(255, 255, 0, 1)
+}
+
+#btnJogar,
+#btnProximaRodada,
+.btnDraw {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 0, 0.75);
+    outline: none;
+    padding: 12px 40px 10px;
+    transition: 1s ease-in-out;
+}
+
+#btnJogar:hover,
+#btnProximaRodada:hover,
+.btnDraw:hover {
+    transition: 1s ease-in-out;
+    background: #2196f3;
+}
+
+#btnJogar:hover {
+    background: #f44336
+}
+
+#btnProximaRodada:hover {
+    background: #14e21d
+}
+
+#resultado {
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#carta-jogador,
+#carta-maquina {
+    width: 360px;
+    height: 500px;
+    overflow: auto;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    background-size: 350px 300px;
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+    background-position-y: 30px;
+    border-radius: 33px;
+}
+
+#carta-jogador h3 {
+    text-align: center;
+}
+
+.carta-imagem {
+    border: 1px solid black;
+    height: 100px;
+    margin: 10px;
+}
+
+.carta-imagem img {
+    width: 100%;
+    height: 100%;
+}
+
+.carta-status {
+    height: 160px;
+    margin: 2rem;
+    z-index: 2;
+}
+
+.carta-status input {
+    margin: 20px 10px;
+}
+
+.resultado-final {
+    color: yellow;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    padding: 1rem;
+    border: 2px solid black;
+    background-color: black;
+    background-image: url('https://media4.giphy.com/media/TZf4ZyXb0lXXi/giphy.gif?cid=ecf05e47fe6mhthncsjj11en6eqldekenrh0kiu0yzrj2sci&rid=giphy.gif');
+    background-size: cover;
+}
+
+.--spacing {
+    margin-left: 2.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.carta-subtitle {
+    z-index: 2;
+    position: absolute;
+    /*Mudar Cor do Título para um amarelo mais escuro, ou para branco*/
+    color: yellow;
+    top: 16px;
+    left: 37px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+#cartas {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.carta-status p {
+    margin-bottom: 2rem;
+}
+
+input {
+    color: yellow;
+}
