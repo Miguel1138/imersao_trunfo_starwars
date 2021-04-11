@@ -92,39 +92,28 @@ button {
     overflow: auto;
     border-radius: 10px;
     margin: 0 auto;
-    display: flex;
+    display: block;
     align-items: flex-end;
     position: relative;
     background-size: 350px 300px;
     background-repeat: no-repeat;
     background-position-x: 5px;
     background-position-y: 30px;
-    border-radius: 33px;
+    border-radius: 30px;
 }
 
 #carta-jogador h3 {
     text-align: center;
 }
 
-.carta-imagem {
-    border: 1px solid black;
-    height: 100px;
-    margin: 10px;
-}
-
-.carta-imagem img {
-    width: 100%;
-    height: 100%;
-}
-
 .carta-status {
-    height: 160px;
+    height: 150px;
     margin: 2rem;
     z-index: 2;
 }
 
 .carta-status input {
-    margin: 20px 10px;
+    margin-top: 15px;
 }
 
 .resultado-final {
@@ -156,7 +145,6 @@ form {
 .carta-subtitle {
     z-index: 2;
     position: absolute;
-    /*Mudar Cor do Título para um amarelo mais escuro, ou para branco*/
     color: yellow;
     top: 16px;
     left: 37px;
@@ -176,4 +164,71 @@ form {
 
 input {
     color: yellow;
+}
+
+.size-card {
+    width: 250px;
+    height: 250px;
+    display: block;
+}
+
+.supertrunfo {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    font-size: 15px !important;
+    color: #000;
+}
+
+.supertrunfo-face {
+    width: 100%;
+    height: fit-content;
+    border: 5px solid #C0C0C0;
+    border-radius: 10px;
+    background-image: url('https://media4.giphy.com/media/TZf4ZyXb0lXXi/giphy.gif?cid=ecf05e47fe6mhthncsjj11en6eqldekenrh0kiu0yzrj2sci&rid=giphy.gif');
+    background-position: center;
+}
+
+header {
+    align-self: center;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.profile-box {
+    margin: 20px;
+}
+
+.photo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10%;
+    border: 3px solid rgba(255, 255, 0, 0.55);
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnChoice {
+    display: block;
+    width: 100%;
+    color: yellow;
+    margin-top: auto;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 0, 0.75);
+    padding: 12px 40px 10px;
+    transition: 1s ease-in-out;
+}
+
+.btnChoice:hover {
+    transition: 1s ease-in-out;
+    background: #2196f3;
 }

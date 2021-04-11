@@ -111,7 +111,8 @@ var savage = {
     }
 }
 
-var baralho = [kenobi, anakin, savage, ventress]
+
+var baralho = [yoda, dooku]
 var cartaJogador
 var cartaMaquina
 
@@ -146,22 +147,22 @@ function sortearCarta() {
 
 function exibirCarta(elementId, cartaEscolhida) {
     var carta = document.getElementById(elementId)
-    var moldura = '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png" style=" width: inherit; height: inherit; position: absolute;">'
 
-    carta.style.backgroundImage = `url(${cartaEscolhida.imagem})`
-    var nome = `<p class="carta-subtitle">${cartaEscolhida.nome}</p>`
+    var nome = `<header>${cartaEscolhida.nome}</header>`
+    var imagem = `<img class="photo" src='${cartaEscolhida.imagem}'>`
+
+    var moldura = '<div class="size-card"> <section> <div class="supertrunfo-face"> ' + nome + ' <div class="profile-box"> <div style="display:flex;justify-content:center;align-items:center;">' + imagem + '</div>'
 
     var opcoesTexto = ""
     for (var atributo in cartaEscolhida.atributos) {
         if (carta.id == 'carta-jogador') {
-            opcoesTexto += "<input type='radio' name='atributo' value='" + atributo + "'>" + atributo + " " + cartaEscolhida.atributos[atributo] + "<br>"
+            opcoesTexto += "<input type='button' class='btnChoice' id='" + atributo + "' name='atributo' value='" + atributo + " " + cartaEscolhida.atributos[atributo] + "'>"
         } else {
-            opcoesTexto += "<p type='text' name='atributo' value='" + atributo + "'>" + atributo + " " + cartaEscolhida.atributos[atributo] + "<br>"
+            opcoesTexto += "<p type='text' name='atributo' style='line-brak:normal'  value='" + atributo + "'>" + atributo + " " + cartaEscolhida.atributos[atributo]
         }
     }
-
-    var html = "<div id='opcoes' class='carta-status'>"
-    carta.innerHTML = moldura + nome + html + opcoesTexto + '</div>'
+    var closingTags = "</div> </div> </section> </div>"
+    carta.innerHTML = moldura + opcoesTexto + closingTags
 }
 
 function obtemAtributoSelecionado(elementName) {
@@ -187,7 +188,7 @@ function jogar() {
             htmlResultado = '<p class="resultado-final">Derrota... </p>'
             pontosMaquina++
         } else {
-            htmlResultado = '<p class="resultado-final">Empate. </p>'
+            htmlResultado = '<p class="resultado-final">Empate.</p>'
         }
     }
 
