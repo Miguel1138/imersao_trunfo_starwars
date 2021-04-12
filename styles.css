@@ -53,7 +53,6 @@ button {
     color: rgba(255, 255, 0, 1)
 }
 
-#btnJogar,
 #btnProximaRodada,
 .btnDraw {
     background: transparent;
@@ -63,15 +62,10 @@ button {
     transition: 1s ease-in-out;
 }
 
-#btnJogar:hover,
 #btnProximaRodada:hover,
 .btnDraw:hover {
     transition: 1s ease-in-out;
     background: #2196f3;
-}
-
-#btnJogar:hover {
-    background: #f44336
 }
 
 #btnProximaRodada:hover {
@@ -92,18 +86,15 @@ button {
     overflow: auto;
     border-radius: 10px;
     margin: 0 auto;
-    display: block;
-    align-items: flex-end;
+    display: flex;
+    align-items: flex;
+    justify-content: center;
     position: relative;
     background-size: 350px 300px;
     background-repeat: no-repeat;
     background-position-x: 5px;
     background-position-y: 30px;
-    border-radius: 30px;
-}
-
-#carta-jogador h3 {
-    text-align: center;
+    border-radius: 33px;
 }
 
 .carta-status {
@@ -132,44 +123,25 @@ button {
     margin-left: 2.5rem;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
+form,
 .wrapper {
     display: flex;
+    width: 100%;
     flex-direction: column;
-}
-
-.carta-subtitle {
-    z-index: 2;
-    position: absolute;
-    color: yellow;
-    top: 16px;
-    left: 37px;
-    font-weight: 800;
-    text-transform: uppercase;
 }
 
 #cartas {
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-}
-
-.carta-status p {
-    margin-bottom: 2rem;
-}
-
-input {
-    color: yellow;
 }
 
 .size-card {
     width: 250px;
     height: 250px;
     display: block;
+    padding-block: 20px;
 }
 
 .supertrunfo {
@@ -216,9 +188,12 @@ header {
 }
 
 .btnChoice {
+    font-family: 'Pathway Gothic One', monospace;
     display: block;
     width: 100%;
     color: yellow;
+    margin-right: auto;
+    margin-left: auto;
     margin-top: auto;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -231,4 +206,28 @@ header {
 .btnChoice:hover {
     transition: 1s ease-in-out;
     background: #2196f3;
+}
+
+
+/*TODO 12/04/2021 CARTA DA MÁQUINA ESTÁ LEVEMENTE MAL-POSICIONADA, VERIFICAR A FONTE DESTE BUG.*/
+
+.machine-layout {
+    display: block;
+    width: 100%;
+    border: none;
+    margin-left: auto;
+    margin-top: auto;
+    color: yellow;
+    margin-top: auto;
+    background: transparent;
+    font-family: 'Pathway Gothic One', monospace;
+    padding-block: 7px;
+}
+
+.versus {
+    font-size: xx-large;
+    align-self: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

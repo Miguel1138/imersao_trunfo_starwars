@@ -111,8 +111,7 @@ var savage = {
     }
 }
 
-
-var baralho = [yoda, dooku]
+var baralho = [yoda, dooku, kenobi, maul]
 var cartaJogador
 var cartaMaquina
 
@@ -122,7 +121,6 @@ var pontosMaquina = 0
 atualizarPlacar()
 atualizarQuantidadeCartas()
 
-document.getElementById('btnJogar').style.display = "none"
 document.getElementById('btnProximaRodada').style.display = "none"
 
 function sortearCarta() {
@@ -142,54 +140,45 @@ function sortearCarta() {
     document.getElementById('title-atribute').innerText = text
 
     exibirCarta('carta-jogador', cartaJogador)
-    document.getElementById('btnJogar').style.display = "inline"
 }
 
 function exibirCarta(elementId, cartaEscolhida) {
     var carta = document.getElementById(elementId)
 
-    var nome = `<header>${cartaEscolhida.nome}</header>`
-    var imagem = `<img class="photo" src='${cartaEscolhida.imagem}'>`
+    let nome = `<header>${cartaEscolhida.nome}</header>`
+    let imagem = `<img class="photo" src='${cartaEscolhida.imagem}'>`
 
-    var moldura = '<div class="size-card"> <section> <div class="supertrunfo-face"> ' + nome + ' <div class="profile-box"> <div style="display:flex;justify-content:center;align-items:center;">' + imagem + '</div>'
+    let moldura = '<div class="size-card"> <section> <div class="supertrunfo-face"> ' + nome + ' <div class="profile-box"> <div style="display:flex;justify-content:center;align-items:center;">' + imagem + '</div>'
 
-    var opcoesTexto = ""
+    var opcoesAtributos = ""
     for (var atributo in cartaEscolhida.atributos) {
         if (carta.id == 'carta-jogador') {
-            opcoesTexto += "<input type='button' class='btnChoice' id='" + atributo + "' name='atributo' value='" + atributo + " " + cartaEscolhida.atributos[atributo] + "'>"
+            console.log(atributo)
+            opcoesAtributos += "<button type='button' class='btnChoice' id='" + atributo + "' name='atributo' onClick='jogar(" + atributo + ")'> " + atributo + " " + cartaEscolhida.atributos[atributo] + " </button>"
         } else {
-            opcoesTexto += "<p type='text' name='atributo' style='line-brak:normal'  value='" + atributo + "'>" + atributo + " " + cartaEscolhida.atributos[atributo]
+            opcoesAtributos += "<p type='text' name='atributo' class='machine-layout' value='" + atributo + "'>" + atributo + "  " + cartaEscolhida.atributos[atributo]
         }
     }
     var closingTags = "</div> </div> </section> </div>"
-    carta.innerHTML = moldura + opcoesTexto + closingTags
+    carta.innerHTML = moldura + opcoesAtributos + closingTags
+        //TODO 12/04/2021 MANEJAR O APARECIMENTO DO 'VERSUS' APÓS A PRIMEIRA CARTA SER ESCOLHIDA.
+        //document.getElementsByClassName('versus').display = "block"
 }
 
-function obtemAtributoSelecionado(elementName) {
-    var radioAtributo = document.getElementsByName(elementName)
-    for (var i = 0; i < radioAtributo.length; i++) {
-        if (radioAtributo[i].checked) {
-            return radioAtributo[i].value
-        }
-    }
-}
-
-function jogar() {
+function jogar(buttonId) {
     var divResultado = document.getElementById('resultado')
-    var atrSelected = obtemAtributoSelecionado('atributo')
+    var atrSelected = buttonId.id
 
-    if (atrSelected == null) {
-        alert('Selecione um atributo antes de jogar !')
+    disableButtons()
+
+    if (cartaJogador.atributos[atrSelected] > cartaMaquina.atributos[atrSelected]) {
+        htmlResultado = '<p class="resultado-final"> Vitória! </p>'
+        pontosJogador++
+    } else if (cartaJogador.atributos[atrSelected] < cartaMaquina.atributos[atrSelected]) {
+        htmlResultado = '<p class="resultado-final">Derrota... </p>'
+        pontosMaquina++
     } else {
-        if (cartaJogador.atributos[atrSelected] > cartaMaquina.atributos[atrSelected]) {
-            htmlResultado = '<p class="resultado-final"> Vitória!  </p>'
-            pontosJogador++
-        } else if (cartaJogador.atributos[atrSelected] < cartaMaquina.atributos[atrSelected]) {
-            htmlResultado = '<p class="resultado-final">Derrota... </p>'
-            pontosMaquina++
-        } else {
-            htmlResultado = '<p class="resultado-final">Empate.</p>'
-        }
+        htmlResultado = '<p class="resultado-final">Empate.</p>'
     }
 
     if (baralho.length == 0) {
@@ -206,7 +195,6 @@ function jogar() {
         document.getElementById('btnProximaRodada').style.display = "inline"
     }
     divResultado.innerHTML = htmlResultado
-    document.getElementById('btnJogar').style.display = "none"
 
     exibirCarta('carta-maquina', cartaMaquina)
     atualizarPlacar()
@@ -223,7 +211,7 @@ function atualizarQuantidadeCartas() {
 }
 
 function proximaRodada() {
-    var divCartas = document.getElementById('cartas')
+    document.getElementById('cartas')
         .innerHTML = `<div id="carta-jogador" class="carta"></div> <div id="carta-maquina" class="carta">`
 
     document.getElementById('btnSortear').style.display = "inline"
@@ -231,7 +219,6 @@ function proximaRodada() {
     document.getElementById('title-atribute').innerHTML = ""
     document.getElementById('resultado').innerHTML = ""
 
-    document.getElementById('btnJogar').style.display = "none"
     document.getElementById('btnProximaRodada').style.display = "none"
 
     atualizarQuantidadeCartas()
@@ -240,4 +227,18 @@ function proximaRodada() {
 function playSoundEffect(sound) {
     let audio = new Audio(sound)
     audio.play()
+}
+
+function disableButtons() {
+    let ataque = document.getElementById('ataque')
+    ataque.className = "machine-layout"
+    ataque.disabled = true
+
+    let defesa = document.getElementById('defesa')
+    defesa.disabled = true
+    defesa.className = "machine-layout"
+
+    let midichlorian = document.getElementById('midichlorian')
+    midichlorian.disabled = true
+    midichlorian.className = "machine-layout"
 }
