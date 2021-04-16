@@ -111,7 +111,7 @@ var savage = {
     }
 }
 
-var baralho = [yoda, dooku, kenobi, maul]
+var baralho = [yoda, dooku, anakin, sidious]
 var cartaJogador
 var cartaMaquina
 
@@ -160,18 +160,21 @@ function exibirCarta(elementId, cartaEscolhida) {
         }
     }
     var closingTags = "</div> </div> </section> </div>"
+
+    carta.className += " card_animation"
     carta.innerHTML = moldura + opcoesAtributos + closingTags
-        //TODO 12/04/2021 MANEJAR O APARECIMENTO DO 'VERSUS' APÓS A PRIMEIRA CARTA SER ESCOLHIDA.
-        //document.getElementsByClassName('versus').display = "block"
+
+    document.getElementById('versus').style.display = "block";
 }
 
 function jogar(buttonId) {
     var divResultado = document.getElementById('resultado')
-    var atrSelected = buttonId.id
+    let atrSelected = buttonId.id
 
     disableButtons()
 
     if (cartaJogador.atributos[atrSelected] > cartaMaquina.atributos[atrSelected]) {
+        //TODO criar animação entre as cartas para simbolizar que ganhou ou não.
         htmlResultado = '<p class="resultado-final"> Vitória! </p>'
         pontosJogador++
     } else if (cartaJogador.atributos[atrSelected] < cartaMaquina.atributos[atrSelected]) {
@@ -183,12 +186,19 @@ function jogar(buttonId) {
 
     if (baralho.length == 0) {
         alert("Fim de jogo")
+
+        // TODO 12/04/2021 CRIAR POP-UP ESTILIZADO MOSTRANDO UM BUTTON DE JOGAR NOVAMENTE E CONTINUAR, 
+        // TODO 12/04/2021 DEVE MOSTRAR NO TÍTULO O RESULTADO DO JOGO (VITORA/DERROTA) E TOCAR MÚSICA TEMA.  
+
         if (pontosJogador > pontosMaquina) {
-            htmlResultado = '<p class="resultado-final"> A força é poderosa em você !!! </p>'
+            playSoundEffect('soundeffects/win_theme.mp3')
+            htmlResultado = '<p class="resultado-final"> VITÓRIA !</p>'
         } else if (pontosJogador < pontosMaquina) {
-            htmlResultado = '<p class="resultado-final">Eu acho perturbadora a sua falta de fé. </p>'
+            playSoundEffect('soundeffects/defeat_theme.mp3')
+            htmlResultado = '<p class="resultado-final"> DERROTA... </p>'
         } else {
-            htmlResultado = '<p class="resultado-final"> Maclunkey!!! </p>'
+            playSoundEffect('soundeffects/draw_theme.mp3')
+            htmlResultado = '<p class="resultado-final"> EMPATE. </p>'
         }
         document.getElementById('btnProximaRodada').style.display = "none"
     } else {
@@ -196,6 +206,7 @@ function jogar(buttonId) {
     }
     divResultado.innerHTML = htmlResultado
 
+    playSoundEffect('soundeffects/saberOn.mp3')
     exibirCarta('carta-maquina', cartaMaquina)
     atualizarPlacar()
 }

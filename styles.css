@@ -1,6 +1,6 @@
 body {
     font-family: 'Pathway Gothic One', monospace;
-    background-image: url('https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-07-super-trunfo-bg.png');
+    background-image: url('https://cdn.wallpapersafari.com/98/74/ogtB6R.jpg');
     background-color: #000000;
     background-size: cover;
     color: rgba(255, 255, 0, 0.87);
@@ -21,6 +21,11 @@ body {
     margin: 0 auto;
     white-space: nowrap;
     overflow: hidden;
+}
+
+#placar,
+#quantidade-cartas {
+    font-size: 2em;
 }
 
 .typing-animation {
@@ -59,17 +64,11 @@ button {
     border: 2px solid rgba(255, 255, 0, 0.75);
     outline: none;
     padding: 12px 40px 10px;
-    transition: 1s ease-in-out;
-}
-
-#btnProximaRodada:hover,
-.btnDraw:hover {
-    transition: 1s ease-in-out;
-    background: #2196f3;
 }
 
 #btnProximaRodada:hover {
-    background: #14e21d
+    transition: 1s ease-in-out;
+    background: #e92604;
 }
 
 #resultado {
@@ -83,7 +82,7 @@ button {
 #carta-maquina {
     width: 360px;
     height: 500px;
-    overflow: auto;
+    overflow: hidden;
     border-radius: 10px;
     margin: 0 auto;
     display: flex;
@@ -95,6 +94,20 @@ button {
     background-position-x: 5px;
     background-position-y: 30px;
     border-radius: 33px;
+}
+
+.card_animation {
+    animation: cardAppear 3s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cardAppear {
+    0% {
+        height: 0
+    }
+    100% {
+        height: 100;
+    }
 }
 
 .carta-status {
@@ -109,14 +122,12 @@ button {
 
 .resultado-final {
     color: yellow;
-    font-size: 2rem;
+    font-size: 5rem;
+    display: block;
     text-transform: uppercase;
+    margin-bottom: auto;
     font-weight: bolder;
     padding: 1rem;
-    border: 2px solid black;
-    background-color: black;
-    background-image: url('https://media4.giphy.com/media/TZf4ZyXb0lXXi/giphy.gif?cid=ecf05e47fe6mhthncsjj11en6eqldekenrh0kiu0yzrj2sci&rid=giphy.gif');
-    background-size: cover;
 }
 
 .--spacing {
@@ -208,9 +219,6 @@ header {
     background: #2196f3;
 }
 
-
-/*TODO 12/04/2021 CARTA DA MÁQUINA ESTÁ LEVEMENTE MAL-POSICIONADA, VERIFICAR A FONTE DESTE BUG.*/
-
 .machine-layout {
     display: block;
     width: 100%;
@@ -224,10 +232,10 @@ header {
     padding-block: 7px;
 }
 
-.versus {
-    font-size: xx-large;
+#versus {
+    font-size: 20em;
     align-self: center;
-    display: block;
+    display: none;
     margin-left: auto;
     margin-right: auto;
 }
